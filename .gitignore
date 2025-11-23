@@ -1,0 +1,57 @@
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.ipr
+*.iml
+out/
+
+### Eclipse ###
+.project
+.classpath
+.settings/
+bin/
+
+### VS Code ###
+.vscode/
+
+### Logs ###
+*.log
+logs/
+spring.log
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Temporary ###
+*.tmp
+*.bak
+*.swp
+*~
+
+### Env / Secrets ###
+.env
+application-dev.properties
+application-local.properties
+
+### Build ###
+build/
+dist/
+
+### Node (caso tenha front junto) ###
+node_modules/
