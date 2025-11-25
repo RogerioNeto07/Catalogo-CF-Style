@@ -25,6 +25,8 @@ public class ProdutoResponseDTO {
     private String tipoNome;
 
     private List<Long> coresIds;
-    private List<Long> tagsIds;
+    private List<String> coresNomes;
 
+    private List<Long> tagsIds;
+    private List<String> tagsNomes;
 }

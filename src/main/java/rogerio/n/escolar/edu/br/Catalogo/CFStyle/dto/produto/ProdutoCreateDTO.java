@@ -24,8 +24,8 @@ public class ProdutoCreateDTO {
     @NotNull
     private int quantidade;
 
-    private List<Long> coresId;
-    private List<Long> tagsId;
+    private List<Long> coresIds;
+    private List<Long> tagsIds;
     private String fotos;
     private String opcoes;
 }
