@@ -3,6 +3,7 @@ package rogerio.n.escolar.edu.br.Catalogo.CFStyle.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Cor;
@@ -26,6 +28,7 @@ public class CorController {
     // LISTAR TODOS
     // -----------------------------
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Cor> listar() {
         return corService.listar();
     }
@@ -34,6 +37,7 @@ public class CorController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Cor buscar(@PathVariable Long id) {
         return corService.buscar(id);
     }
@@ -43,6 +47,7 @@ public class CorController {
     // CRIAR COR
     // -----------------------------
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Cor criar(@RequestBody Cor cor) {
         return corService.criar(cor);
     }
@@ -51,6 +56,7 @@ public class CorController {
     // ATUALIZAR COR
     // -----------------------------
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Cor atualizar(@PathVariable Long id,
                                         @RequestBody Cor cor) {
         return corService.atualizar(id, cor);
@@ -60,6 +66,7 @@ public class CorController {
     // DELETAR COR
     // -----------------------------
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         corService.deletar(id);
     }

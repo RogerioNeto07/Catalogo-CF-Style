@@ -3,12 +3,14 @@ package rogerio.n.escolar.edu.br.Catalogo.CFStyle.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -28,6 +30,7 @@ public class ProdutoController {
     // LISTAR TODOS
     // -----------------------------
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<ProdutoResponseDTO> listar() {
         return produtoService.listar();
     }
@@ -36,6 +39,7 @@ public class ProdutoController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ProdutoResponseDTO buscar(@PathVariable Long id) {
         return produtoService.buscar(id);
     }
@@ -44,6 +48,7 @@ public class ProdutoController {
     // CRIAR PRODUTO
     // -----------------------------
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ProdutoResponseDTO criar(@RequestBody ProdutoCreateDTO dto) {
         return produtoService.criar(dto);
     }
@@ -52,6 +57,7 @@ public class ProdutoController {
     // ATUALIZAR PRODUTO
     // -----------------------------
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ProdutoResponseDTO atualizar(@PathVariable Long id,
                                         @RequestBody ProdutoCreateDTO dto) {
         return produtoService.atualizar(id, dto);
@@ -61,6 +67,7 @@ public class ProdutoController {
     // DELETAR PRODUTO
     // -----------------------------
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         produtoService.deletar(id);
     }
@@ -70,6 +77,7 @@ public class ProdutoController {
     // BUSCAR POR TIPO
     // -----------------------------
     @GetMapping("/tipo/{tipoId}")
+    @ResponseStatus(HttpStatus.OK)
     public List<ProdutoResponseDTO> listarPorTipo(@PathVariable Long tipoId) {
         return produtoService.listarPorTipo(tipoId);
     }
@@ -78,6 +86,7 @@ public class ProdutoController {
     // BUSCAR POR TAG
     // -----------------------------
     @GetMapping("/tag/{tagId}")
+    @ResponseStatus(HttpStatus.OK)
     public List<ProdutoResponseDTO> listarPorTag(@PathVariable Long tagId) {
         return produtoService.listarPorTag(tagId);
     }
