@@ -25,7 +25,7 @@ public class CorController {
     private CorService corService;
 
     // -----------------------------
-    // LISTAR TODOS
+    // LISTAR TODAS
     // -----------------------------
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

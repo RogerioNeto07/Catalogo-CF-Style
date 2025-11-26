@@ -3,7 +3,9 @@ package rogerio.n.escolar.edu.br.Catalogo.CFStyle.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Cor;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.repositories.CorRepository;
@@ -26,7 +28,9 @@ public class CorService {
     // -----------------------------
     public Cor buscar(Long id) {
         return corRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Cor não encontrada"));
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Cor não encontrada"
+            ));
     }
 
     // -----------------------------
@@ -39,8 +43,13 @@ public class CorService {
     // -----------------------------
     // DELETAR COR
     // -----------------------------
-    public void deletar(Long id){
-        corRepository.deleteById(id);
+    public void deletar(Long id) {
+        Cor cor = corRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Cor não encontrada"
+            ));
+        
+        corRepository.delete(cor);
     }
 
     // -----------------------------
@@ -48,8 +57,9 @@ public class CorService {
     // -----------------------------
     public Cor atualizar(Long id, Cor corAtualizada) {
         Cor cor = corRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cor não encontrada"));
-        cor.setNome(corAtualizada.getNome());
+                .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Cor não encontrada"
+            ));
         return corRepository.save(cor);
     }
 }

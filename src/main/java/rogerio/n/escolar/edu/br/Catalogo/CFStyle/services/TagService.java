@@ -3,7 +3,9 @@ package rogerio.n.escolar.edu.br.Catalogo.CFStyle.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Tag;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.repositories.TagRepository;
@@ -27,7 +29,9 @@ public class TagService {
     // -----------------------------
     public Tag buscar(Long id) {
         return tagRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Tag não encontrada"));
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Tag não encontrada"
+            ));
     }
 
     // -----------------------------
@@ -40,8 +44,13 @@ public class TagService {
     // -----------------------------
     // DELETAR TAG
     // -----------------------------
-    public void deletar(Long id){
-        tagRepository.deleteById(id);
+    public void deletar(Long id) {
+        Tag tag = tagRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Tag não encontrada"
+            ));
+        
+        tagRepository.delete(tag);
     }
 
     // -----------------------------
@@ -49,8 +58,9 @@ public class TagService {
     // -----------------------------
     public Tag atualizar(Long id, Tag tagAtualizada) {
         Tag tag = tagRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tag não encontrada"));
-        tag.setNome(tagAtualizada.getNome());
+                .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Tag não encontrada"
+            ));
         return tagRepository.save(tag);
     }
 }

@@ -25,7 +25,7 @@ public class TagController {
     private TagService tagService;
 
     // -----------------------------
-    // LISTAR TODOS
+    // LISTAR TODAS
     // -----------------------------
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

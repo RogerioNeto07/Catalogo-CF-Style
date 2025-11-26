@@ -148,11 +148,9 @@ public class ProdutoService {
         dto.setTipoId(p.getTipo().getId());
         dto.setTipoNome(p.getTipo().getNome());
 
-        // cores
         dto.setCoresIds(p.getCores().stream().map(c -> c.getId()).toList());
         dto.setCoresNomes(p.getCores().stream().map(c -> c.getNome()).toList());
 
-        // tags
         dto.setTagsIds(p.getTags().stream().map(t -> t.getId()).toList());
         dto.setTagsNomes(p.getTags().stream().map(t -> t.getNome()).toList());
 
