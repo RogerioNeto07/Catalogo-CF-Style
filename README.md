@@ -57,6 +57,15 @@ O projeto foi pensado para suprir duas necessidades da CF Style:
 | `PUT`    | `/tipos/:id` | Atualiza nome do tipo            |
 | `DELETE` | `/tipos/:id` | Exclui um tipo                   |
 
+### Cores:
+| Método   | Endpoint     | Descrição                        |
+| -------- | ------------ | -------------------------------- |
+| `GET`    | `/cores`     | Lista todos as cores |
+| `GET`    | `/cores/:id` | Detalhes de uma cor              |
+| `POST`   | `/cores`     | Cria uma cor          |
+| `PUT`    | `/cores/:id` | Atualiza nome da cor            |
+| `DELETE` | `/cores/:id` | Exclui uma cor                   |
+
 ### Vendas:
 | Método   | Endpoint      | Descrição                                       |
 | -------- | ------------- | ----------------------------------------------- |
