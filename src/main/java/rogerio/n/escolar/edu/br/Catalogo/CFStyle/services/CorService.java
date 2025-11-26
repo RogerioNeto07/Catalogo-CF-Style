@@ -56,12 +56,13 @@ public class CorService {
     // ATUALIZAR COR
     // -----------------------------
     public Cor atualizar(Long id, Cor corAtualizada) {
-        Cor cor = corRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Cor não encontrada"
+    Cor cor = corRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Cor não encontrada"
             ));
-        return corRepository.save(cor);
-    }
+    cor.setNome(corAtualizada.getNome());
+    return corRepository.save(cor);
+}
 }
 
 
