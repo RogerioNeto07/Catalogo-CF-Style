@@ -57,10 +57,11 @@ public class TipoService {
     // ATUALIZAR TIPO
     // -----------------------------
     public Tipo atualizar(Long id, Tipo tipoAtualizada) {
-        Tipo tipo = tipoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Tipo de produto não encontrado"
+    Tipo tipo = tipoRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Tipo  de produto não encontrado"
             ));
-        return tipoRepository.save(tipo);
-    }
+    tipo.setNome(tipoAtualizada.getNome());
+    return tipoRepository.save(tipo);
+}
 }
