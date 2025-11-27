@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Cor;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.services.CorService;
 
@@ -28,6 +29,7 @@ public class CorController {
     // LISTAR TODAS
     // -----------------------------
     @GetMapping
+    @Operation(summary = "Lista todas as cores")
     @ResponseStatus(HttpStatus.OK)
     public List<Cor> listar() {
         return corService.listar();
@@ -37,6 +39,7 @@ public class CorController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @Operation(summary = "Busca cor por ID")
     @ResponseStatus(HttpStatus.OK)
     public Cor buscar(@PathVariable Long id) {
         return corService.buscar(id);
@@ -47,6 +50,7 @@ public class CorController {
     // CRIAR COR
     // -----------------------------
     @PostMapping
+    @Operation(summary = "Cria uma cor")
     @ResponseStatus(HttpStatus.CREATED)
     public Cor criar(@RequestBody Cor cor) {
         return corService.criar(cor);
@@ -56,6 +60,7 @@ public class CorController {
     // ATUALIZAR COR
     // -----------------------------
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza uma cor")
     @ResponseStatus(HttpStatus.OK)
     public Cor atualizar(@PathVariable Long id,
                                         @RequestBody Cor cor) {
@@ -66,6 +71,7 @@ public class CorController {
     // DELETAR COR
     // -----------------------------
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deleta uma cor")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         corService.deletar(id);

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +33,7 @@ public class ProdutoController {
     // LISTAR TODOS
     // -----------------------------
     @GetMapping
+    @Operation(summary = "Lista todos os produtos")
     @ResponseStatus(HttpStatus.OK)
     public List<ProdutoResponseDTO> listar() {
         return produtoService.listar();
@@ -39,6 +43,7 @@ public class ProdutoController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @Operation(summary = "Busca um produto por ID")
     @ResponseStatus(HttpStatus.OK)
     public ProdutoResponseDTO buscar(@PathVariable Long id) {
         return produtoService.buscar(id);
@@ -48,6 +53,7 @@ public class ProdutoController {
     // CRIAR PRODUTO
     // -----------------------------
     @PostMapping
+    @Operation(summary = "Cria um produto")
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoResponseDTO criar(@RequestBody ProdutoCreateDTO dto) {
         return produtoService.criar(dto);
@@ -57,6 +63,7 @@ public class ProdutoController {
     // ATUALIZAR PRODUTO
     // -----------------------------
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza um produto")
     @ResponseStatus(HttpStatus.OK)
     public ProdutoResponseDTO atualizar(@PathVariable Long id,
                                         @RequestBody ProdutoCreateDTO dto) {
@@ -67,6 +74,7 @@ public class ProdutoController {
     // DELETAR PRODUTO
     // -----------------------------
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deleta um produto")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         produtoService.deletar(id);
@@ -77,6 +85,7 @@ public class ProdutoController {
     // BUSCAR POR TIPO
     // -----------------------------
     @GetMapping("/tipo/{tipoId}")
+    @Operation(summary = "Busca produtos por tipo")
     @ResponseStatus(HttpStatus.OK)
     public List<ProdutoResponseDTO> listarPorTipo(@PathVariable Long tipoId) {
         return produtoService.listarPorTipo(tipoId);
@@ -87,6 +96,7 @@ public class ProdutoController {
     // -----------------------------
     @GetMapping("/tag/{tagId}")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Busca produtos por tag")
     public List<ProdutoResponseDTO> listarPorTag(@PathVariable Long tagId) {
         return produtoService.listarPorTag(tagId);
     }

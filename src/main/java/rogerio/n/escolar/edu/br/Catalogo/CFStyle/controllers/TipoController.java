@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Tipo;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.services.TipoService;
 
@@ -28,6 +29,7 @@ public class TipoController {
     // LISTAR TODOS
     // -----------------------------
     @GetMapping
+    @Operation(summary = "Lista todos os tipos")
     @ResponseStatus(HttpStatus.OK)
     public List<Tipo> listar() {
         return tipoService.listar();
@@ -37,6 +39,7 @@ public class TipoController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @Operation(summary = "Busca tipo por ID")
     @ResponseStatus(HttpStatus.OK)
     public Tipo buscar(@PathVariable Long id) {
         return tipoService.buscar(id);
@@ -47,6 +50,7 @@ public class TipoController {
     // CRIAR TIPO
     // -----------------------------
     @PostMapping
+    @Operation(summary = "Cria um tipo")
     @ResponseStatus(HttpStatus.CREATED)
     public Tipo criar(@RequestBody Tipo tipo) {
         return tipoService.criar(tipo);
@@ -56,6 +60,7 @@ public class TipoController {
     // ATUALIZAR TIPO
     // -----------------------------
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza um tipo")
     @ResponseStatus(HttpStatus.OK)
     public Tipo atualizar(@PathVariable Long id,
                                         @RequestBody Tipo tipo) {
@@ -66,6 +71,7 @@ public class TipoController {
     // DELETAR TIPO
     // -----------------------------
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deleta um tipo")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         tipoService.deletar(id);

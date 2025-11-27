@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.models.Tag;
 import rogerio.n.escolar.edu.br.Catalogo.CFStyle.services.TagService;
 
@@ -28,6 +29,7 @@ public class TagController {
     // LISTAR TODAS
     // -----------------------------
     @GetMapping
+    @Operation(summary = "Lista todas as tags")
     @ResponseStatus(HttpStatus.OK)
     public List<Tag> listar() {
         return tagService.listar();
@@ -37,6 +39,7 @@ public class TagController {
     // BUSCAR POR ID
     // -----------------------------
     @GetMapping("/{id}")
+    @Operation(summary = "Busca tag por ID")
     @ResponseStatus(HttpStatus.OK)
     public Tag buscar(@PathVariable Long id) {
         return tagService.buscar(id);
@@ -47,6 +50,7 @@ public class TagController {
     // CRIAR TAG
     // -----------------------------
     @PostMapping
+    @Operation(summary = "Cria uma tag")
     @ResponseStatus(HttpStatus.CREATED)
     public Tag criar(@RequestBody Tag tag) {
         return tagService.criar(tag);
@@ -56,6 +60,7 @@ public class TagController {
     // ATUALIZAR TAG
     // -----------------------------
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza uma tag")
     @ResponseStatus(HttpStatus.OK)
     public Tag atualizar(@PathVariable Long id,
                                         @RequestBody Tag tag) {
@@ -66,6 +71,7 @@ public class TagController {
     // DELETAR TAG
     // -----------------------------
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deleta uma tag")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id) {
         tagService.deletar(id);
