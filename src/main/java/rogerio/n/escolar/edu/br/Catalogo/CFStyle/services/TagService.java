@@ -57,10 +57,11 @@ public class TagService {
     // ATUALIZAR TAG
     // -----------------------------
     public Tag atualizar(Long id, Tag tagAtualizada) {
-        Tag tag = tagRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Tag não encontrada"
+    Tag tag = tagRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Tag não encontrada"
             ));
-        return tagRepository.save(tag);
-    }
+    tag.setNome(tagAtualizada.getNome());
+    return tagRepository.save(tag);
+}
 }
