@@ -26,9 +26,9 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    // @ManyToOne
+    // @JoinColumn(name = "usuario_id")
+    // private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "tipo_id")
@@ -56,10 +56,10 @@ public class Produto {
     private int quantidade;
     private boolean ativo = true;
 
-    @Column(columnDefinition = "json")
+    @Column
     private String fotos;
 
-    @Column(columnDefinition = "json")
+    @Column
     private String opcoes;
 
     @Column(name = "criado_em")

@@ -7,8 +7,7 @@ import lombok.Data;
 
 @Data
 public class ProdutoCreateDTO {
-    @NotNull
-    private long usuarioId;
+    // private long usuarioId;
 
     private long tipoId;
 
